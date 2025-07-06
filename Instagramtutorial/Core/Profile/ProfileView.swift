@@ -33,7 +33,7 @@ struct ProfileView: View {
                 }
                 Divider()
             }
-            //post grid vieu
+            //post grid view
         }
     }
 }
