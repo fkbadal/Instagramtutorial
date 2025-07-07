@@ -14,12 +14,56 @@ struct ProfileView: View {
             VStack{
                 //pic and states
                 HStack{
+                    Image("black-panther-1")
+                        .resizable()
+                        .scaledToFit( )
+                        .frame(width: 80, height: 80)
+                        .clipShape(Circle())
+                        
+                    Spacer()
                     
+                    VStack{
+                        Text("2")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("Posts")
+                            .font(.footnote)
+                    }
+                    .frame(width: 72)
+                    
+                    VStack{
+                        Text("30")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        
+                        Text("Followers")
+                            .font(.footnote)
+                    }
+                    .frame(width: 72)
+                    
+                    VStack{
+                        Text("3")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        
+                        Text("Following")
+                            .font(.footnote)
+                    }
+                    .frame(width: 72)
                 }
+                .padding(.horizontal)
+                .padding(.bottom, 4)
                 //name and vio
-                VStack {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Chedweak Broazman")
+                        .font(.footnote)
+                        .fontWeight(.semibold)
                     
+                    Text("Wokanda Forever")
+                        .font(.footnote)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
                 //action button
                 Button {
                     
