@@ -24,7 +24,7 @@ struct FeedCell: View {
                 Spacer()
             }
             
-            .padding(.leading)
+            .padding(.leading, 8)
                 //post image
             Image("batman-2")
                 .resizable()
@@ -59,8 +59,28 @@ struct FeedCell: View {
                 .foregroundColor(.primary)
             
             // like label
-             
+             Text("23 Likes")
+                .fontWeight(.semibold)
+                .font(.footnote)
+                .padding(.leading, 10)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.top, 1)
            // caption label
+            HStack{
+                Text("batman").fontWeight(.semibold) +
+                Text("This is some caption for now")
+            }
+            .font(.footnote)
+            .padding(.leading, 10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 1)
+            
+            Text("6h ago")
+            .font(.footnote)
+            .padding(.leading, 10)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 1)
+            .foregroundColor(.secondary)
         }
     }
 }
