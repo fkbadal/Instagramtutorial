@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct User: Identifiable,Codable {
     let id: String
     var username: String
@@ -16,7 +17,7 @@ struct User: Identifiable,Codable {
 }
 
 extension User {
-    static var MOCK_USER: [User] = [
+    static var MOCK_USERS: [User] = [
         .init(
             id: NSUUID().uuidString,
             username: "batman",
