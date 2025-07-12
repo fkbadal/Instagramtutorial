@@ -1,14 +1,13 @@
 //
-//  PeofileView.swift
+//  CurrentUserprofileView.swift
 //  Instagramtutorial
 //
-//  Created by Fayzul Kobir Badal on 7/2/25.
+//  Created by Fayzul Kobir Badal on 7/12/25.
 //
 
 import SwiftUI
 
-struct ProfileView: View {
-    let user: User
+struct CurrentUserprofileView: View {
     
     let gridItems: [GridItem] = [
         .init(.flexible(), spacing: 1),
@@ -16,16 +15,17 @@ struct ProfileView: View {
         .init(.flexible(), spacing: 1)
     ]
     var body: some View {
+        NavigationStack{
             ScrollView{
                 //header
                 VStack(spacing: 10){
                     //pic and states
                     HStack{
-                        Image(user.profileImageUrl ?? "")
+                        Image("black-panther-1")
                             .resizable()
                             .scaledToFit( )
                             .frame(width: 80, height: 80)
-                                .clipShape(Circle())
+                            .clipShape(Circle())
                         
                         Spacer()
                         
@@ -39,14 +39,12 @@ struct ProfileView: View {
                     .padding(.bottom, 4)
                     //name and vio
                     VStack(alignment: .leading, spacing: 4) {
-                        if let fullname = user.fullName{
-                            Text(fullname)
-                        }
+                        Text("Chedweak Broazman")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
                         
-                        if let bio = user.bio{
-                            Text(bio)
-                                .font(.footnote)
-                        }
+                        Text("Wokanda Forever")
+                            .font(.footnote)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
@@ -74,12 +72,22 @@ struct ProfileView: View {
                 }
             }
             .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.inline) 
-    }
- }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button{
+                    }label: {
+                        Image(systemName: "line.3.horizontal")
+                            .foregroundColor(.black)
+                    }
+                    
+                }
+            }
 
-#Preview {
-    ProfileView(user: User.MOCK_USERS[0])
+        }
+    }
 }
 
-
+#Preview {
+    CurrentUserprofileView()
+}

@@ -15,38 +15,41 @@ struct SearchView: View {
             ScrollView{
                 LazyVStack(spacing: 12){
                     ForEach(User.MOCK_USERS){user in
-                        HStack{
-                            Image(user.profileImageUrl ?? "")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 40, height: 40)
-                                .clipShape(Circle())
-                            
-                            VStack(alignment: .leading){
-                                Text(user.username)
-                                    .fontWeight(.semibold)
+                        NavigationLink(value: user){
+                            HStack{
+                                Image(user.profileImageUrl ?? "")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
                                 
-                                if let fullName = user.fullName{
-                                    Text(fullName)
+                                VStack(alignment: .leading){
+                                    Text(user.username)
+                                        .fontWeight(.semibold)
+                                    
+                                    if let fullName = user.fullName{
+                                        Text(fullName)
+                                    }
                                 }
+                                .font(.footnote)
+                                Spacer()
                             }
-                            .font(.footnote)
-                            Spacer()
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
                         }
-                        .padding(.horizontal)
-                        .foregroundColor(.black)
-                      
+                    }
                 }
-            }
-                .padding(.top)
+                .padding(.top, 8)
                 .searchable(text: $searchText, prompt: "search...")
             }
-            
-            .navigationTitle(Text("Explore"))
+            .navigationDestination(for: User.self, destination: { user in ProfileView(user: user)
+            })
+            .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)
         }
+       }
     }
-}
+                         
 
 #Preview {
     SearchView()
