@@ -15,6 +15,10 @@ struct ProfileView: View {
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1)
     ]
+    
+     var posts: [Post] {
+         return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
+    }
     var body: some View {
             ScrollView{
                 //header
@@ -41,6 +45,9 @@ struct ProfileView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         if let fullname = user.fullName{
                             Text(fullname)
+                                .font(.footnote)
+                                .fontWeight(.semibold)
+                                
                         }
                         
                         if let bio = user.bio{
@@ -65,10 +72,10 @@ struct ProfileView: View {
                 }
                 //post grid view
                 LazyVGrid(columns: gridItems, spacing: 1){
-                    ForEach(0 ... 15, id:\.self){index in
-                        Image("black-panther-2")
+                    ForEach(posts){ post in
+                        Image(post.imageUrl)
                             .resizable()
-                            .scaledToFill()
+                            .scaledToFit()
                         
                     }
                 }
@@ -79,7 +86,7 @@ struct ProfileView: View {
  }
 
 #Preview {
-    ProfileView(user: User.MOCK_USERS[0])
+    ProfileView(user: User.MOCK_USERS[1])
 }
 
 

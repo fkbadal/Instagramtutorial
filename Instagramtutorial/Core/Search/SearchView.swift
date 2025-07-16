@@ -46,7 +46,7 @@ struct SearchView: View {
             })
             .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)
-        }
+         }
        }
     }
                          
