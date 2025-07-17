@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CurrentUserprofileView: View {
     
-    let gridItems: [GridItem] = [
-        .init(.flexible(), spacing: 1),
-        .init(.flexible(), spacing: 1),
-        .init(.flexible(), spacing: 1)
-    ]
+    let user: User
+    
+    var posts: [Post] {
+        return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
+    }
     var body: some View {
         NavigationStack{
             ScrollView{
@@ -62,14 +62,7 @@ struct CurrentUserprofileView: View {
                     Divider()
                 }
                 //post grid view
-                LazyVGrid(columns: gridItems, spacing: 1){
-                    ForEach(0 ... 15, id:\.self){index in
-                        Image("black-panther-2")
-                            .resizable()
-                            .scaledToFill()
-                        
-                    }
-                }
+                PostGridView(posts: posts)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
@@ -89,5 +82,5 @@ struct CurrentUserprofileView: View {
 }
 
 #Preview {
-    CurrentUserprofileView()
+    CurrentUserprofileView(user: User.MOCK_USERS[1])
 }
